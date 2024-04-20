@@ -9,23 +9,22 @@ struct t_Pair
     int b;
 };
 
-t_Pair return_pair(int x)
+void return_pair(t_Pair *p)
 {
-    t_Pair result;
-
-    result.a = x * x;
-    result.b = x * x * x;
-    return result;
+   (*p).a += 1;
+   (*p).b += 10;
 }
 
 int main()
 {
-    int x;
-    std::cin >> x;
+    t_Pair x;
+    std::cin >> x.a >> x.b;
 
-    t_Pair pair_ = return_pair(x);
+    t_Pair y;
+    y = x;
+    return_pair(&y);
 
-    std::cout << pair_.a << " " << pair_.b << '\n';
+    std::cout << y.a << " " << y.b << '\n';
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
